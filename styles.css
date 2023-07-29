@@ -1,0 +1,140 @@
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    height: 100%;
+}
+
+.card {
+    width: 400px;
+    height: 100%;
+    background-color: #1B1924;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+
+.hero-image{
+    width: 100px;
+    margin: auto;
+    display: block;
+    padding-top: 25px;
+}
+
+.title{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff;
+}
+
+#input-field{
+    width: 320px;
+    height: 200px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+    text-align: start;
+    color: #8F8F8F;
+    background-color: #444059;
+    resize: none;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+button{
+    background-color: #28A9F1;
+    color: 04131C;
+    width: 340px;
+    height: 70px;
+    border-radius: 8px;
+    border:  none;
+    margin: 10px auto;
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+p{
+    color: #fff;
+    text-align: center;
+    color: #1B1924;
+    padding: 10px;
+    text-align: start;
+    font-size: 16px;
+    margin: 0px auto;
+}
+
+
+.endorsement-heading{
+    color: #fff;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 20px;
+    background-color: #1B1924;
+}
+
+#shopping-list{
+    padding: 0;
+}
+
+.from-name, .to-name{
+    width: 160px;
+    background-color: #444059;
+    border: none;
+    color: #8F8F8F;
+    height: 40px;
+    border-radius: 8px;
+    margin: 0 5px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.names{
+    width: 350px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: auto;
+}
+
+#list-container{
+    color: #fff;
+    text-align: center;
+    color: #28A9F1;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+
+#to-field, #from-field{
+    width: 320px;
+    height: 25px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 8px;
+    border: none;
+    padding: 10px;
+    text-align: start;
+    color: #8F8F8F;
+    background-color: #444059;
+    resize: none;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+#endorsedContainer{
+    margin: 10px auto;
+    background-color: #fff;
+    width: 300px;
+    border-radius: 8px;
+}
+
+#inputParagraph{
+    font-weight: 500;
+    font-size: 14px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Nanum Myeongjo', serif;
+}
