@@ -67,11 +67,14 @@ function appendHeartIcon(fromFieldEl) {
     }
 }
 
-// Add a listener to the "endorsementList" location in the database
 onValue(ref(database, "endorsementList"), function (snapshot) {
     const items = snapshot.val();
     if (items) {
         const itemsArray = Object.entries(items);
+        
+        // Reverse the itemsArray to display the newest entries first
+        itemsArray.reverse();
+        
         clearEndorsementListEl();
         itemsArray.forEach(([itemID, item]) => {
             appendItemToEndorsementListEl(itemID, item);
@@ -80,6 +83,7 @@ onValue(ref(database, "endorsementList"), function (snapshot) {
         endorsementListEl.innerHTML = "No items here... yet";
     }
 });
+
 
 
 // Function to append a new item to the endorsement list element
