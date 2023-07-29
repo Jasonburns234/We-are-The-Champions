@@ -1,3 +1,4 @@
+// Import Firebase modules from CDN
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getDatabase, ref, push, onValue, remove, set } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
@@ -15,7 +16,7 @@ const database = getDatabase(app);
 // Get references to HTML elements in the DOM
 const inputFieldEl = document.getElementById("input-field");
 const addButtonEl = document.getElementById("add-button");
-const endorsementListEl = document.getElementById("endorsement-list");
+const shoppingListEl = document.getElementById("shopping-list");
 const toFieldEl = document.getElementById("to-field");
 const fromFieldEl = document.getElementById("from-field");
 
@@ -34,8 +35,8 @@ addButtonEl.addEventListener("click", function () {
         likes: 0, // Initialize likes count to 0 for new items
     };
 
-    // Push the new item object to the "endorsementlist" location in the database
-    push(ref(database, "endorsement"), newItem);
+    // Push the new item object to the "shoppingList" location in the database
+    push(ref(database, "shoppingList"), newItem);
 
     // Clear the input fields after adding the item
     clearInputFields();
@@ -66,22 +67,22 @@ function appendHeartIcon(fromFieldEl) {
     }
 }
 
-// Add a listener to the "endorsementlist" location in the database
-onValue(ref(database, "endorsement"), function (snapshot) {
+// Add a listener to the "shoppingList" location in the database
+onValue(ref(database, "shoppingList"), function (snapshot) {
     const items = snapshot.val();
     if (items) {
         const itemsArray = Object.entries(items);
-        clearEndorsementListEl();
+        clearShoppingListEl();
         itemsArray.forEach(([itemID, item]) => {
-            appendItemToEndorsementListEl(itemID, item);
+            appendItemToShoppingListEl(itemID, item);
         });
     } else {
-        endorsementListEl.innerHTML = "No items here... yet";
+        shoppingListEl.innerHTML = "No items here... yet";
     }
 });
 
-// Function to append a new item to the endorsement list element
-function appendItemToEndorsementListEl(itemID, item) {
+// Function to append a new item to the shopping list element
+function appendItemToShoppingListEl(itemID, item) {
     const { to, input, from, likes } = item;
 
     // Create a new list item element
@@ -128,21 +129,22 @@ function appendItemToEndorsementListEl(itemID, item) {
 
     // Add a double-click event listener to the new element to handle item removal
     newEl.addEventListener("dblclick", function () {
-        const exactLocationOfItemInDB = ref(database, `endorsement/${itemID}`);
+        const exactLocationOfItemInDB = ref(database, `shoppingList/${itemID}`);
         remove(exactLocationOfItemInDB);
     });
 
-    // Append the new element to the endorsement list element in the DOM
+    // Append the new element to the shopping list element in the DOM
     newEl.appendChild(likesParagraph);
-    endorsementListEl.append(newEl);
+    shoppingListEl.append(newEl);
 }
 
-// Function to clear the content of the endorsement list element
-function clearEndorsementListEl() {
-    endorsementListEl.innerHTML = "";
+// Function to clear the content of the shopping list element
+function clearShoppingListEl() {
+    shoppingListEl.innerHTML = "";
 }
 
 // Function to update the like count in the database
 function updateLikeCount(itemID, likesCount) {
-    set(ref(database, `endorsement/${itemID}/likes`), likesCount);
+    set(ref(database, `shoppingList/${itemID}/likes`), likesCount);
 }
+
