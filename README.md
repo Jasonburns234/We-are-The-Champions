@@ -1,6 +1,6 @@
 # We-are-The-Champions
 Firebase app to provide endorsements
-add endorsements one click to add liked, double click to remove endorsement from the DB
+add endorsements one click to add likes, double click to remove endorsement from the DB
 
 # Hi 👋 I am Jason Burns
 ## Developer
