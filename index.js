@@ -42,7 +42,7 @@ addButtonEl.addEventListener("click", function () {
     clearInputFields();
 
     // Add the heart icon under the "From" paragraph
-    appendHeartIcon();
+    appendHeartIcon(fromFieldEl);
 });
 
 // Function to clear the content of the input fields
@@ -53,14 +53,18 @@ function clearInputFields() {
 }
 
 // Function to append the heart icon under the "From" paragraph
-function appendHeartIcon() {
-    // Create the heart icon element
-    const heartIcon = document.createElement("i");
-    heartIcon.className = "fa fa-heart";
-    heartIcon.style.fontSize = "24px";
+function appendHeartIcon(fromFieldEl) {
+    // Check if a heart icon already exists
+    if (fromFieldEl.querySelector(".fa.fa-heart") === null) {
+        // Create the heart icon element
+        const heartIcon = document.createElement("i");
+        heartIcon.className = "fa fa-heart";
+        heartIcon.style.fontSize = "14px";
+        heartIcon.style.color = "#28A9F1";
 
-    // Append the heart icon under the "From" paragraph
-    fromFieldEl.parentNode.appendChild(heartIcon);
+        // Append the heart icon under the "From" paragraph
+        fromFieldEl.appendChild(heartIcon);
+    }
 }
 
 // Add a listener to the "shoppingList" location in the database
@@ -103,19 +107,25 @@ function appendItemToShoppingListEl(itemID, item) {
 
     // Create and append the "Likes" paragraph element
     const likesParagraph = document.createElement("p");
-    likesParagraph.innerHTML = `Likes: ${likes} <i class="fa fa-heart" style="font-size:14px; color: #28A9F1;"></i>`;
+    likesParagraph.textContent = `Likes: ${likes} `;
     likesParagraph.style.textAlign = "right";
+
+    // Create the heart icon element
+    const heartIcon = document.createElement("i");
+    heartIcon.className = "fa fa-heart";
+    heartIcon.style.fontSize = "14px";
+    heartIcon.style.color = "#28A9F1";
 
     // Add a click event listener to the new element to handle item likes
     let likeCounter = likes || 0;
     newEl.addEventListener("click", function () {
         likeCounter++;
-        likesParagraph.innerHTML = `Likes: ${likeCounter} <i class="fa fa-heart" style="font-size:14px; color: #28A9F1;"></i>`;
+        likesParagraph.textContent = `Likes: ${likeCounter} `;
         updateLikeCount(itemID, likeCounter);
     });
 
-    // Append the "Likes" paragraph to the new element
-    newEl.appendChild(likesParagraph);
+    // Append the heart icon to the "Likes" paragraph
+    likesParagraph.appendChild(heartIcon);
 
     // Add a double-click event listener to the new element to handle item removal
     newEl.addEventListener("dblclick", function () {
@@ -124,6 +134,7 @@ function appendItemToShoppingListEl(itemID, item) {
     });
 
     // Append the new element to the shopping list element in the DOM
+    newEl.appendChild(likesParagraph);
     shoppingListEl.append(newEl);
 }
 
@@ -136,3 +147,4 @@ function clearShoppingListEl() {
 function updateLikeCount(itemID, likesCount) {
     set(ref(database, `shoppingList/${itemID}/likes`), likesCount);
 }
+
