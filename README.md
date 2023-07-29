@@ -8,7 +8,7 @@ Always learning, improving, coding, collaborating
 
 * 🌍  I'm based in Cumbria, UK
 * 🖥️  See my portfolio at [https://jdbwebdesigns.co.uk/profile](https://jdbwebdesigns.co.uk/profile)
-* 👨‍💻  I'm currently working on I'm currently working on some Python Projects
+* 👨‍💻  I'm currently working on some Python Projects
 * ✉️  You can reach me at [info@jdbwebdesigns.co.uk](mailto:info@jdbwebdesigns.co.uk)
 * 🧠  I'm currently learning React, Python, Advanced JS
 * 🤝  I'm open to collaborating on interesting projects
