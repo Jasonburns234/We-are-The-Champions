@@ -1,4 +1,3 @@
-// Import Firebase modules from CDN
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getDatabase, ref, push, onValue, remove, set } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
@@ -35,7 +34,7 @@ addButtonEl.addEventListener("click", function () {
         likes: 0, // Initialize likes count to 0 for new items
     };
 
-    // Push the new item object to the "endorsement" location in the database
+    // Push the new item object to the "endorsementlist" location in the database
     push(ref(database, "endorsement"), newItem);
 
     // Clear the input fields after adding the item
@@ -67,7 +66,7 @@ function appendHeartIcon(fromFieldEl) {
     }
 }
 
-// Add a listener to the "endorsement" location in the database
+// Add a listener to the "endorsementlist" location in the database
 onValue(ref(database, "endorsement"), function (snapshot) {
     const items = snapshot.val();
     if (items) {
@@ -147,4 +146,3 @@ function clearEndorsementListEl() {
 function updateLikeCount(itemID, likesCount) {
     set(ref(database, `endorsement/${itemID}/likes`), likesCount);
 }
-
